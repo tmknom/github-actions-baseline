@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   lint:
-    name: Lint YAML
+    name: Lint by yamllint
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

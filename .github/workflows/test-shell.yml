@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   lint:
-    name: Lint Shell
+    name: Lint by shellcheck
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
