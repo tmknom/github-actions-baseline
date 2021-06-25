@@ -1,0 +1,29 @@
+name: Test Markdown
+on:
+  push:
+    branches:
+      - test-github-actions
+    paths:
+      - '**.md'
+  pull_request:
+    paths:
+      - '**.md'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install markdownlint
+        run: sudo npm install -g markdownlint-cli
+      - name: Display markdownlint
+        run: markdownlint --version
+      - name: Run markdownlint
+        run: markdownlint --dot "**/*.md"
