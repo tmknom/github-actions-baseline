@@ -1,0 +1,27 @@
+name: Test Shell
+on:
+  push:
+    branches:
+      - test-github-actions
+    paths:
+      - '**.sh'
+  pull_request:
+    paths:
+      - '**.sh'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint Shell
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Display shellcheck
+        run: docker run --rm koalaman/shellcheck --version
+      - name: Run shellcheck
+        run: find . -name "*.sh" | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck
