@@ -3,7 +3,13 @@ on:
   push:
     branches:
       - test-github-actions
+    paths:
+      - '**.yml'
+      - '**.yaml'
   pull_request:
+    paths:
+      - '**.yml'
+      - '**.yaml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
