@@ -26,3 +26,17 @@ jobs:
         run: yamllint --version
       - name: Run yamllint
         run: yamllint --strict .
+
+  format:
+    name: Format by prettier
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install prettier
+        run: sudo npm install -g prettier
+      - name: Display prettier
+        run: prettier --version
+      - name: Run prettier
+        run: prettier --check --parser=yaml '**/*.y*ml'
