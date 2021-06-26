@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - test-github-actions
-    paths:
-      - '**.sh'
   pull_request:
     paths:
       - '**.sh'
