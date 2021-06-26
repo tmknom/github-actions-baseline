@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   lint:
-    name: Lint Markdown
+    name: Lint by markdownlint
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
