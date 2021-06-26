@@ -20,8 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install shellcheck
-        run: docker pull koalaman/shellcheck
+        run: docker pull koalaman/shellcheck:stable
       - name: Display shellcheck
-        run: docker run --rm koalaman/shellcheck --version
+        run: docker run --rm koalaman/shellcheck:stable --version
       - name: Run shellcheck
-        run: find . -name "*.sh" | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck
+        run: find . -name "*.sh" | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck:stable
