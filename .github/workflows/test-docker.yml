@@ -1,0 +1,27 @@
+name: Test Docker
+on:
+  push:
+    branches:
+      - test-github-actions
+  pull_request:
+    paths:
+      - '**/Dockerfile'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint by hadolint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install hadolint
+        run: docker pull hadolint/hadolint
+      - name: Display hadolint
+        run: docker run --rm hadolint/hadolint hadolint --version
+      - name: Run hadolint
+        run: find . -name Dockerfile | xargs docker run --rm -v $(pwd):/work -w /work hadolint/hadolint hadolint
