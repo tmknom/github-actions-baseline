@@ -1,4 +1,5 @@
-# github-actions-devops
+# github-actions-template
+
 GitHub Actions template collection for DevOps
 
 ## License
