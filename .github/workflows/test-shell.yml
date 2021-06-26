@@ -25,3 +25,17 @@ jobs:
         run: docker run --rm koalaman/shellcheck:stable --version
       - name: Run shellcheck
         run: find . -name "*.sh" | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck:stable
+
+  format:
+    name: Format by shfmt
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install shfmt
+        run: docker pull mvdan/shfmt
+      - name: Display shfmt
+        run: docker run --rm mvdan/shfmt --version
+      - name: Run shfmt
+        run: docker run --rm -v $(pwd):/work -w /work mvdan/shfmt -i 2 -ci -bn -d .
