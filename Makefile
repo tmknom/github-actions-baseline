@@ -19,6 +19,9 @@ SHELL := /bin/bash
 # Disable any builtin suffix rules, then speedup a bit.
 .SUFFIXES:
 
+# Sets the default goal to be used if no targets were specified on the command line.
+.DEFAULT_GOAL := help
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
