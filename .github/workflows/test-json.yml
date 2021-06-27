@@ -12,6 +12,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: Lint by jsonlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install jsonlint
+        run: sudo npm install -g jsonlint
+      - name: Display jsonlint
+        # jsonlint --version return code is 1
+        run: jsonlint --version || true
+      - name: Run jsonlint
+        run: find . -name *.json | xargs jsonlint
+
   format:
     name: Format by prettier
     runs-on: ubuntu-latest
