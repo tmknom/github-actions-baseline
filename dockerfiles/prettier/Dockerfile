@@ -4,10 +4,12 @@ WORKDIR /app
 COPY package.json /app
 
 RUN set -x && \
+    addgroup nonroot && \
+    adduser -G nonroot -s /bin/sh -D nonroot && \
     npm install && \
     npm cache clean --force
 
-USER node
+USER nonroot
 WORKDIR /work
 ENV PATH $PATH:/app/node_modules/.bin
 
