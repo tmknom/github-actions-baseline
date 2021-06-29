@@ -24,7 +24,7 @@ jobs:
       - name: Display shellcheck
         run: docker run --rm koalaman/shellcheck:stable --version
       - name: Run shellcheck
-        run: find . -name "*.sh" | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck:stable
+        run: find . -name '*.sh' | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck:stable
 
   format:
     name: Format by shfmt
