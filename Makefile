@@ -28,6 +28,12 @@ SHELL := /bin/bash
 DOCKER ?= $(shell which docker)
 DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 
+#
+# Build docker images
+#
+build-prettier: dockerfiles/prettier ## docker build for prettier
+	$(DOCKER_BUILD)
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
