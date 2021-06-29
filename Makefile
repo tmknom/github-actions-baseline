@@ -56,6 +56,10 @@ build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 build-write-good: dockerfiles/write-good ## docker build for write-good
 	$(DOCKER_BUILD)
 
+.PHONY: build-proselint
+build-proselint: dockerfiles/proselint ## docker build for proselint
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
