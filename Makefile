@@ -34,7 +34,7 @@ DOCKER_RMI ?= $(DOCKER) rmi
 # Build docker images
 #
 .PHONY: build
-build: build-prettier build-markdownlint build-yamllint build-jsonlint ## build all docker images
+build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good ## build all docker images
 
 .PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
@@ -50,6 +50,10 @@ build-yamllint: dockerfiles/yamllint ## docker build for yamllint
 
 .PHONY: build-jsonlint
 build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
+	$(DOCKER_BUILD)
+
+.PHONY: build-write-good
+build-write-good: dockerfiles/write-good ## docker build for write-good
 	$(DOCKER_BUILD)
 
 #
