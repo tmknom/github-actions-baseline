@@ -38,6 +38,9 @@ build-prettier: dockerfiles/prettier ## docker build for prettier
 build-markdownlint: dockerfiles/markdownlint ## docker build for markdownlint
 	$(DOCKER_BUILD)
 
+build-yamllint: dockerfiles/yamllint ## docker build for yamllint
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
