@@ -32,26 +32,32 @@ DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 #
 # Build docker images
 #
+.PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
 	$(DOCKER_BUILD)
 
+.PHONY: build-markdownlint
 build-markdownlint: dockerfiles/markdownlint ## docker build for markdownlint
 	$(DOCKER_BUILD)
 
+.PHONY: build-yamllint
 build-yamllint: dockerfiles/yamllint ## docker build for yamllint
 	$(DOCKER_BUILD)
 
 #
 # Tests
 #
+.PHONY: test-shell
 test-shell: ## test shell by shellcheck and shfmt
 	find . -name *.sh | xargs $(DOCKER_RUN) koalaman/shellcheck:stable
 	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -d .
 
+.PHONY: test-markdown
 test-markdown: ## test markdown by markdownlint and prettier
 	$(DOCKER_RUN) markdownlint --dot **/*.md
 	$(DOCKER_RUN) prettier --check --parser=markdown **/*.md
 
+.PHONY: test-yaml
 test-yaml: ## test yaml by yamllint and prettier
 	$(DOCKER_RUN) yamllint --strict .
 	$(DOCKER_RUN) prettier --check --parser=yaml **/*.y*ml
