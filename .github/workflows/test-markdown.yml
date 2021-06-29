@@ -24,7 +24,7 @@ jobs:
       - name: Display markdownlint
         run: markdownlint --version
       - name: Run markdownlint
-        run: markdownlint --dot "**/*.md"
+        run: markdownlint --dot '**/*.md'
 
   format:
     name: Format by prettier
