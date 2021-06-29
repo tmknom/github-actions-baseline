@@ -35,6 +35,9 @@ DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 build-prettier: dockerfiles/prettier ## docker build for prettier
 	$(DOCKER_BUILD)
 
+build-markdownlint: dockerfiles/markdownlint ## docker build for markdownlint
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
