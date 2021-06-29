@@ -34,7 +34,7 @@ DOCKER_RMI ?= $(DOCKER) rmi
 # Build docker images
 #
 .PHONY: build
-build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good ## build all docker images
+build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good build-proselint ## build all docker images
 
 .PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
@@ -54,6 +54,10 @@ build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 
 .PHONY: build-write-good
 build-write-good: dockerfiles/write-good ## docker build for write-good
+	$(DOCKER_BUILD)
+
+.PHONY: build-proselint
+build-proselint: dockerfiles/proselint ## docker build for proselint
 	$(DOCKER_BUILD)
 
 #
@@ -96,6 +100,7 @@ clean: ## docker rmi for all images
 	$(DOCKER_RMI) yamllint
 	$(DOCKER_RMI) jsonlint
 	$(DOCKER_RMI) write-good
+	$(DOCKER_RMI) proselint
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
