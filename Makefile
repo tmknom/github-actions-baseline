@@ -52,6 +52,10 @@ test-markdown: ## test markdown by markdownlint and prettier
 	$(DOCKER_RUN) markdownlint --dot **/*.md
 	$(DOCKER_RUN) prettier --check --parser=markdown **/*.md
 
+test-yaml: ## test yaml by yamllint and prettier
+	$(DOCKER_RUN) yamllint --strict .
+	$(DOCKER_RUN) prettier --check --parser=yaml **/*.y*ml
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
