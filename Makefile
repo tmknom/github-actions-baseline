@@ -22,6 +22,18 @@ SHELL := /bin/bash
 # Sets the default goal to be used if no targets were specified on the command line.
 .DEFAULT_GOAL := help
 
+#
+# Variables to be used by docker commands
+#
+DOCKER ?= $(shell which docker)
+DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
+
+#
+# Build docker images
+#
+build-prettier: dockerfiles/prettier ## docker build for prettier
+	$(DOCKER_BUILD)
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
