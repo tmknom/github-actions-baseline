@@ -28,6 +28,7 @@ SHELL := /bin/bash
 DOCKER ?= $(shell which docker)
 DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
+DOCKER_RMI ?= $(DOCKER) rmi
 
 #
 # Build docker images
@@ -80,6 +81,16 @@ test-yaml: ## test yaml by yamllint and prettier
 test-json: ## test json by jsonlint and prettier
 	find . -name '*.json' | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
 	$(DOCKER_RUN) prettier --check --parser=json **/*.json
+
+#
+# Clean
+#
+.PHONY: clean
+clean: ## docker rmi for all images
+	$(DOCKER_RMI) prettier
+	$(DOCKER_RMI) markdownlint
+	$(DOCKER_RMI) yamllint
+	$(DOCKER_RMI) jsonlint
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
