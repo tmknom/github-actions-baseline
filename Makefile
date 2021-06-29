@@ -66,6 +66,11 @@ test-yaml: ## test yaml by yamllint and prettier
 	$(DOCKER_RUN) yamllint --strict .
 	$(DOCKER_RUN) prettier --check --parser=yaml **/*.y*ml
 
+.PHONY: test-json
+test-json: ## test json by jsonlint and prettier
+	find . -name *.json | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
+	$(DOCKER_RUN) prettier --check --parser=json **/*.json
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
