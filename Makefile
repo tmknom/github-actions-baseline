@@ -51,6 +51,10 @@ build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 #
 # Tests
 #
+.PHONY: test-dockerfile
+test-dockerfile: ## test dockerfile by hadolint
+	find . -name Dockerfile | xargs $(DOCKER_RUN) hadolint/hadolint hadolint
+
 .PHONY: test-shell
 test-shell: ## test shell by shellcheck and shfmt
 	find . -name '*.sh' | xargs $(DOCKER_RUN) koalaman/shellcheck:stable
