@@ -52,6 +52,10 @@ build-yamllint: dockerfiles/yamllint ## docker build for yamllint
 build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 	$(DOCKER_BUILD)
 
+.PHONY: build-write-good
+build-write-good: dockerfiles/write-good ## docker build for write-good
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
