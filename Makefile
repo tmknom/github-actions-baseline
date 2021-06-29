@@ -32,6 +32,9 @@ DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 #
 # Build docker images
 #
+.PHONY: build
+build: build-prettier build-markdownlint build-yamllint build-jsonlint ## build all docker images
+
 .PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
 	$(DOCKER_BUILD)
