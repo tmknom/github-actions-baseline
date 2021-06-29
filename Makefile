@@ -95,6 +95,7 @@ clean: ## docker rmi for all images
 	$(DOCKER_RMI) markdownlint
 	$(DOCKER_RMI) yamllint
 	$(DOCKER_RMI) jsonlint
+	$(DOCKER_RMI) write-good
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
