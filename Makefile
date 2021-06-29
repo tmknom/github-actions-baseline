@@ -51,6 +51,9 @@ build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 #
 # Tests
 #
+.PHONY: test
+test: test-dockerfile test-shell test-markdown test-yaml test-json## test all
+
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint
 	find . -name Dockerfile | xargs $(DOCKER_RUN) hadolint/hadolint hadolint
