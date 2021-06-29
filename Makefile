@@ -44,6 +44,10 @@ build-markdownlint: dockerfiles/markdownlint ## docker build for markdownlint
 build-yamllint: dockerfiles/yamllint ## docker build for yamllint
 	$(DOCKER_BUILD)
 
+.PHONY: build-jsonlint
+build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
