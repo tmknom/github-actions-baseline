@@ -53,7 +53,7 @@ build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 #
 .PHONY: test-shell
 test-shell: ## test shell by shellcheck and shfmt
-	find . -name *.sh | xargs $(DOCKER_RUN) koalaman/shellcheck:stable
+	find . -name '*.sh' | xargs $(DOCKER_RUN) koalaman/shellcheck:stable
 	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -d .
 
 .PHONY: test-markdown
@@ -68,7 +68,7 @@ test-yaml: ## test yaml by yamllint and prettier
 
 .PHONY: test-json
 test-json: ## test json by jsonlint and prettier
-	find . -name *.json | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
+	find . -name '*.json' | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
 	$(DOCKER_RUN) prettier --check --parser=json **/*.json
 
 # Self-Documented Makefile
