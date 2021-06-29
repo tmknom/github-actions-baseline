@@ -28,6 +28,7 @@ SHELL := /bin/bash
 DOCKER ?= $(shell which docker)
 DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
+DOCKER_RMI ?= $(DOCKER) rmi
 
 #
 # Build docker images
