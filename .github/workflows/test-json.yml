@@ -25,7 +25,7 @@ jobs:
         # jsonlint --version return code is 1
         run: jsonlint --version || true
       - name: Run jsonlint
-        run: find . -name *.json | xargs jsonlint
+        run: find . -name '*.json' | xargs -I {} jsonlint --quiet --compact {}
 
   format:
     name: Format by prettier
