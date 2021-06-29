@@ -35,6 +35,13 @@ DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 build-prettier: dockerfiles/prettier ## docker build for prettier
 	$(DOCKER_BUILD)
 
+#
+# Tests
+#
+test-shell: ## test shell by shellcheck and shfmt
+	find . -name *.sh | xargs $(DOCKER_RUN) koalaman/shellcheck:stable
+	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -d .
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
