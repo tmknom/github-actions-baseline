@@ -82,6 +82,16 @@ test-json: ## test json by jsonlint and prettier
 	find . -name '*.json' | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
 	$(DOCKER_RUN) prettier --check --parser=json **/*.json
 
+#
+# Clean
+#
+.PHONY: clean
+clean: ## docker rmi for all images
+	$(DOCKER_RMI) prettier
+	$(DOCKER_RMI) markdownlint
+	$(DOCKER_RMI) yamllint
+	$(DOCKER_RMI) jsonlint
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
