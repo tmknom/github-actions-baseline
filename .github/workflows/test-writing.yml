@@ -25,3 +25,17 @@ jobs:
         run: write-good --version
       - name: Run write-good
         run: find . -name '*.md' | xargs write-good
+
+  proselint:
+    name: Lint by proselint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install proselint
+        run: pip install proselint
+      - name: Display proselint
+        run: proselint --version
+      - name: Run proselint
+        run: find . -name '*.md' | xargs proselint
