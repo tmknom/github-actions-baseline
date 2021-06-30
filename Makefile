@@ -66,6 +66,10 @@ build-write-good: dockerfiles/write-good ## docker build for write-good
 build-proselint: dockerfiles/proselint ## docker build for proselint
 	$(DOCKER_BUILD)
 
+.PHONY: build-alex
+build-alex: dockerfiles/alex ## docker build for alex
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
