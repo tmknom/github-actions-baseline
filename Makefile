@@ -31,6 +31,12 @@ DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 DOCKER_RMI ?= $(DOCKER) rmi
 
 #
+# All
+#
+.PHONY: all
+all: clean build test ## run clean, build and test
+
+#
 # Build docker images
 #
 .PHONY: build
