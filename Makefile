@@ -23,6 +23,13 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 #
+# Variables for the current git attributes
+#
+BASE_BRANCH ?= main
+CURRENT_BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
+BASE_SHA ?= $(shell git merge-base remotes/origin/$(BASE_BRANCH) HEAD)
+
+#
 # Variables to be used by docker commands
 #
 DOCKER ?= $(shell which docker)
@@ -103,6 +110,7 @@ test-json: ## test json by jsonlint and prettier
 .PHONY: test-secret
 test-secret: ## test secret by secretlint
 	$(DOCKER_RUN) secretlint/secretlint secretlint '**/*'
+	$(DOCKER_RUN) zricethezav/gitleaks --path=/work -v --redact --commit-to=$(BASE_SHA) --branch=$(CURRENT_BRANCH)
 
 .PHONY: test-writing
 test-writing: ## test writing by write-good, proselint and alex
