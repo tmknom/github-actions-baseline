@@ -74,7 +74,7 @@ build-alex: dockerfiles/alex ## docker build for alex
 # Tests
 #
 .PHONY: test
-test: test-dockerfile test-shell test-markdown test-yaml test-json ## test all
+test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret ## test all
 
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint
@@ -99,6 +99,10 @@ test-yaml: ## test yaml by yamllint and prettier
 test-json: ## test json by jsonlint and prettier
 	find . -name '*.json' | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
 	$(DOCKER_RUN) prettier --check --parser=json **/*.json
+
+.PHONY: test-secret
+test-secret: ## test secret by secretlint
+	$(DOCKER_RUN) secretlint/secretlint secretlint '**/*'
 
 #
 # Clean
