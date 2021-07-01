@@ -123,6 +123,7 @@ clean: ## docker rmi for all images
 	$(DOCKER_RMI) markdownlint
 	$(DOCKER_RMI) yamllint
 	$(DOCKER_RMI) jsonlint
+	$(DOCKER_RMI) detect-secrets
 	$(DOCKER_RMI) write-good
 	$(DOCKER_RMI) proselint
 	$(DOCKER_RMI) alex
