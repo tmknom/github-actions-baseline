@@ -104,6 +104,12 @@ test-json: ## test json by jsonlint and prettier
 test-secret: ## test secret by secretlint
 	$(DOCKER_RUN) secretlint/secretlint secretlint '**/*'
 
+.PHONY: test-writing
+test-writing: ## test writing by write-good, proselint and alex
+	find . -name '*.md' | xargs $(DOCKER_RUN) write-good
+	find . -name '*.md' | xargs $(DOCKER_RUN) proselint
+	$(DOCKER_RUN) alex '**/*.md'
+
 #
 # Clean
 #
