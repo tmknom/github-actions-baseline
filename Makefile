@@ -110,6 +110,7 @@ test-json: ## test json by jsonlint and prettier
 .PHONY: test-secret
 test-secret: ## test secret by secretlint
 	$(DOCKER_RUN) secretlint/secretlint secretlint '**/*'
+	$(DOCKER_RUN) zricethezav/gitleaks --path=/work -v --redact --commit-to=$(BASE_SHA) --branch=$(CURRENT_BRANCH)
 
 .PHONY: test-writing
 test-writing: ## test writing by write-good, proselint and alex
