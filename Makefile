@@ -23,6 +23,13 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 #
+# Variables for the current git attributes
+#
+BASE_BRANCH ?= main
+CURRENT_BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
+BASE_SHA ?= $(shell git merge-base remotes/origin/$(BASE_BRANCH) HEAD)
+
+#
 # Variables to be used by docker commands
 #
 DOCKER ?= $(shell which docker)
