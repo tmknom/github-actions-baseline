@@ -74,7 +74,7 @@ build-alex: dockerfiles/alex ## docker build for alex
 # Tests
 #
 .PHONY: test
-test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret ## test all
+test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret test-writing ## test all
 
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint
@@ -103,6 +103,12 @@ test-json: ## test json by jsonlint and prettier
 .PHONY: test-secret
 test-secret: ## test secret by secretlint
 	$(DOCKER_RUN) secretlint/secretlint secretlint '**/*'
+
+.PHONY: test-writing
+test-writing: ## test writing by write-good, proselint and alex
+	find . -name '*.md' | xargs $(DOCKER_RUN) write-good
+	find . -name '*.md' | xargs $(DOCKER_RUN) proselint
+	$(DOCKER_RUN) alex '**/*.md'
 
 #
 # Clean
