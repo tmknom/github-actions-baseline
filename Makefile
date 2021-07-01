@@ -58,6 +58,10 @@ build-yamllint: dockerfiles/yamllint ## docker build for yamllint
 build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
 	$(DOCKER_BUILD)
 
+.PHONY: build-detect-secrets
+build-detect-secrets: dockerfiles/detect-secrets ## docker build for detect-secrets
+	$(DOCKER_BUILD)
+
 .PHONY: build-write-good
 build-write-good: dockerfiles/write-good ## docker build for write-good
 	$(DOCKER_BUILD)
