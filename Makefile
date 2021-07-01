@@ -74,7 +74,7 @@ build-alex: dockerfiles/alex ## docker build for alex
 # Tests
 #
 .PHONY: test
-test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret ## test all
+test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret test-writing ## test all
 
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint
