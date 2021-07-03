@@ -28,6 +28,8 @@ SHELL := /bin/bash
 BASE_BRANCH ?= main
 CURRENT_BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
 BASE_SHA ?= $(shell git merge-base remotes/origin/$(BASE_BRANCH) HEAD)
+GIT_USER_NAME ?= $(shell git config user.name)
+GIT_USER_EMAIL ?= $(shell git config user.email)
 
 #
 # Variables to be used by docker commands
@@ -36,6 +38,13 @@ DOCKER ?= $(shell which docker)
 DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 DOCKER_RMI ?= $(DOCKER) rmi
+
+#
+# Variables to be used by standard-version commands
+#
+STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
+                    -e GIT_COMMITTER_NAME="$(GIT_USER_NAME)" -e GIT_COMMITTER_EMAIL="$(GIT_USER_EMAIL)" \
+                    -e GIT_AUTHOR_NAME="$(GIT_USER_NAME)" -e GIT_AUTHOR_EMAIL="$(GIT_USER_EMAIL)" standard-version
 
 #
 # All
@@ -121,6 +130,13 @@ test-writing: ## test writing by write-good, proselint and alex
 	find . -name '*.md' | xargs $(DOCKER_RUN) write-good
 	find . -name '*.md' | xargs $(DOCKER_RUN) proselint
 	$(DOCKER_RUN) alex '**/*.md'
+
+#
+# Bump version
+#
+.PHONY: bump-minor
+bump-minor: ## Bump minor version and generate CHANGELOG.md
+	$(STANDARD_VERSION) --release-as minor
 
 #
 # Clean
