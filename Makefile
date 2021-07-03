@@ -77,6 +77,10 @@ build-proselint: dockerfiles/proselint ## docker build for proselint
 build-alex: dockerfiles/alex ## docker build for alex
 	$(DOCKER_BUILD)
 
+.PHONY: build-standard-version
+build-standard-version: dockerfiles/standard-version ## docker build for standard-version
+	$(DOCKER_BUILD)
+
 #
 # Tests
 #
