@@ -47,7 +47,7 @@ all: clean build test ## run clean, build and test
 # Build docker images
 #
 .PHONY: build
-build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good build-proselint build-alex ## build all docker images
+build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good build-proselint build-alex build-standard-version ## build all docker images
 
 .PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
@@ -75,6 +75,10 @@ build-proselint: dockerfiles/proselint ## docker build for proselint
 
 .PHONY: build-alex
 build-alex: dockerfiles/alex ## docker build for alex
+	$(DOCKER_BUILD)
+
+.PHONY: build-standard-version
+build-standard-version: dockerfiles/standard-version ## docker build for standard-version
 	$(DOCKER_BUILD)
 
 #
@@ -130,6 +134,7 @@ clean: ## docker rmi for all images
 	$(DOCKER_RMI) write-good
 	$(DOCKER_RMI) proselint
 	$(DOCKER_RMI) alex
+	$(DOCKER_RMI) standard-version
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
