@@ -134,6 +134,7 @@ clean: ## docker rmi for all images
 	$(DOCKER_RMI) write-good
 	$(DOCKER_RMI) proselint
 	$(DOCKER_RMI) alex
+	$(DOCKER_RMI) standard-version
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
