@@ -47,7 +47,7 @@ all: clean build test ## run clean, build and test
 # Build docker images
 #
 .PHONY: build
-build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good build-proselint build-alex ## build all docker images
+build: build-prettier build-markdownlint build-yamllint build-jsonlint build-write-good build-proselint build-alex build-standard-version ## build all docker images
 
 .PHONY: build-prettier
 build-prettier: dockerfiles/prettier ## docker build for prettier
