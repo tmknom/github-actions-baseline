@@ -132,6 +132,13 @@ test-writing: ## test writing by write-good, proselint and alex
 	$(DOCKER_RUN) alex '**/*.md'
 
 #
+# Bump version
+#
+.PHONY: bump-minor
+bump-minor: ## Bump minor version and generate CHANGELOG.md
+	$(STANDARD_VERSION) --release-as minor
+
+#
 # Clean
 #
 .PHONY: clean
