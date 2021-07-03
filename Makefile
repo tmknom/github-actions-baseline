@@ -138,6 +138,10 @@ test-writing: ## test writing by write-good, proselint and alex
 bump-minor: ## Bump minor version and generate CHANGELOG.md
 	$(STANDARD_VERSION) --release-as minor
 
+.PHONY: bump-patch
+bump-patch: ## Bump patch version and generate CHANGELOG.md
+	$(STANDARD_VERSION) --release-as patch
+
 #
 # Clean
 #
