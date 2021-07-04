@@ -1,4 +1,4 @@
-# github-actions-template
+# GitHub Actions Baseline
 
 GitHub Actions template collection for DevOps
 
