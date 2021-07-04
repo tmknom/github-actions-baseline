@@ -1,6 +1,6 @@
-# github-actions-template
+# GitHub Actions Baseline
 
-GitHub Actions template collection for DevOps
+A collection of useful GitHub Actions for all kinds of projects
 
 ## License
 
