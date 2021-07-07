@@ -140,7 +140,9 @@ test-writing: ## test writing by write-good, proselint and alex
 #
 .PHONY: bump-minor
 bump-minor: ## Bump minor version and generate CHANGELOG.md
-	$(STANDARD_VERSION) --release-as minor
+	git checkout -b release-$(NEXT_MINOR_VERSION) && \
+	$(STANDARD_VERSION) --release-as minor && \
+	git push --follow-tags origin release-$(NEXT_MINOR_VERSION)
 
 .PHONY: bump-patch
 bump-patch: ## Bump patch version and generate CHANGELOG.md
