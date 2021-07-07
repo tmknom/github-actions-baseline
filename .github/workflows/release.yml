@@ -1,0 +1,38 @@
+name: Release
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{ github.event.pull_request.merged && startsWith(github.head_ref, 'release-') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Create tag
+        id: tag
+        run: |
+          git fetch --tag
+          tag=$(git tag --sort=-v:refname | head -1)
+          echo "::set-output name=value::${tag}"
+      - name: Create body
+        id: body
+        run: |
+          body=$(grep -A 100000 -F '## 0.' CHANGELOG.md | sed '1d')
+          body="${body//$'\n'/\\n}"
+          echo "::set-output name=value::${body}"
+      - name: Release
+        uses: actions/github-script@v4
+        with:
+          script: |
+            github.repos.createRelease({
+              ...context.repo,
+              tag_name: "${{ steps.tag.outputs.value }}",
+              name: "${{ steps.tag.outputs.value }}",
+              body: "${{ steps.body.outputs.value }}"
+            });
