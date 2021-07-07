@@ -46,6 +46,10 @@ STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
                     -e GIT_COMMITTER_NAME="$(GIT_USER_NAME)" -e GIT_COMMITTER_EMAIL="$(GIT_USER_EMAIL)" \
                     -e GIT_AUTHOR_NAME="$(GIT_USER_NAME)" -e GIT_AUTHOR_EMAIL="$(GIT_USER_EMAIL)" standard-version
 
+NEXT_MINOR_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as minor | $(GREP_AND_CUT_TAG))
+NEXT_PATCH_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as patch | $(GREP_AND_CUT_TAG))
+GREP_AND_CUT_TAG ?= grep tagging | cut -d " " -f 4
+
 #
 # All
 #
@@ -136,11 +140,15 @@ test-writing: ## test writing by write-good, proselint and alex
 #
 .PHONY: bump-minor
 bump-minor: ## Bump minor version and generate CHANGELOG.md
-	$(STANDARD_VERSION) --release-as minor
+	git checkout -b release-$(NEXT_MINOR_VERSION) && \
+	$(STANDARD_VERSION) --release-as minor && \
+	git push --follow-tags origin release-$(NEXT_MINOR_VERSION)
 
 .PHONY: bump-patch
 bump-patch: ## Bump patch version and generate CHANGELOG.md
-	$(STANDARD_VERSION) --release-as patch
+	git checkout -b release-$(NEXT_PATCH_VERSION) && \
+	$(STANDARD_VERSION) --release-as patch && \
+	git push --follow-tags origin release-$(NEXT_PATCH_VERSION)
 
 #
 # Clean
