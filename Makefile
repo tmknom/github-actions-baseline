@@ -37,7 +37,6 @@ GIT_USER_EMAIL ?= $(shell git config user.email)
 DOCKER ?= $(shell which docker)
 DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
-DOCKER_RMI ?= $(DOCKER) rmi
 
 #
 # Variables to be used by standard-version commands
@@ -161,14 +160,7 @@ bump-first: ## Bump first version and generate CHANGELOG.md
 #
 .PHONY: clean
 clean: ## docker rmi for all images
-	$(DOCKER_RMI) prettier
-	$(DOCKER_RMI) markdownlint
-	$(DOCKER_RMI) yamllint
-	$(DOCKER_RMI) jsonlint
-	$(DOCKER_RMI) write-good
-	$(DOCKER_RMI) proselint
-	$(DOCKER_RMI) alex
-	$(DOCKER_RMI) standard-version
+	ls dockerfiles | xargs $(DOCKER) rmi
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
