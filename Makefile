@@ -149,6 +149,10 @@ format-markdown: ## format markdown by prettier
 format-yaml: ## format yaml by prettier
 	$(DOCKER_RUN) prettier --write --parser=yaml **/*.y*ml
 
+.PHONY: format-json
+format-json: ## format json by prettier
+	$(DOCKER_RUN) prettier --write --parser=json **/*.json
+
 #
 # Bump version
 #
