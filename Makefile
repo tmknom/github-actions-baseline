@@ -59,40 +59,40 @@ all: clean build test ## run clean, build and test
 # Build docker images
 #
 .PHONY: build
-build: build-linter build-proofreading build-prettier build-standard-version ## build all docker images
+build: build-linter build-proofreading build-prettier build-standard-version ## build all images
 build-linter: build-markdownlint build-yamllint build-jsonlint
 build-proofreading: build-write-good build-proselint build-alex
 
 .PHONY: build-prettier
-build-prettier: dockerfiles/prettier ## docker build for prettier
+build-prettier: dockerfiles/prettier ## build prettier image
 	$(DOCKER_BUILD)
 
 .PHONY: build-markdownlint
-build-markdownlint: dockerfiles/markdownlint ## docker build for markdownlint
+build-markdownlint: dockerfiles/markdownlint ## build markdownlint image
 	$(DOCKER_BUILD)
 
 .PHONY: build-yamllint
-build-yamllint: dockerfiles/yamllint ## docker build for yamllint
+build-yamllint: dockerfiles/yamllint ## build yamllint image
 	$(DOCKER_BUILD)
 
 .PHONY: build-jsonlint
-build-jsonlint: dockerfiles/jsonlint ## docker build for jsonlint
+build-jsonlint: dockerfiles/jsonlint ## build jsonlint image
 	$(DOCKER_BUILD)
 
 .PHONY: build-write-good
-build-write-good: dockerfiles/write-good ## docker build for write-good
+build-write-good: dockerfiles/write-good ## build write-good image
 	$(DOCKER_BUILD)
 
 .PHONY: build-proselint
-build-proselint: dockerfiles/proselint ## docker build for proselint
+build-proselint: dockerfiles/proselint ## build proselint image
 	$(DOCKER_BUILD)
 
 .PHONY: build-alex
-build-alex: dockerfiles/alex ## docker build for alex
+build-alex: dockerfiles/alex ## build alex image
 	$(DOCKER_BUILD)
 
 .PHONY: build-standard-version
-build-standard-version: dockerfiles/standard-version ## docker build for standard-version
+build-standard-version: dockerfiles/standard-version ## build standard-version image
 	$(DOCKER_BUILD)
 
 #
