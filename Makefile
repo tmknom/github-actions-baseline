@@ -137,6 +137,10 @@ test-writing: ## test writing by write-good, proselint and alex
 #
 # Format code
 #
+.PHONY: format-shell
+format-shell: ## format shell by shfmt
+	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -w .
+
 .PHONY: format-markdown
 format-markdown: ## format markdown by prettier
 	$(DOCKER_RUN) prettier --write --parser=markdown **/*.md
