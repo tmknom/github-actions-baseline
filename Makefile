@@ -137,6 +137,9 @@ test-writing: ## test writing by write-good, proselint and alex
 #
 # Format code
 #
+.PHONY: format
+format: format-shell format-markdown format-yaml format-json ## format all
+
 .PHONY: format-shell
 format-shell: ## format shell by shfmt
 	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -w .
