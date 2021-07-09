@@ -15,6 +15,23 @@ Start from this baseline, then your code will be much more maintainable.
 - **Secret Detection**: Scan hardcoded secrets like passwords, api keys and tokens
 - **English Proofreading**: Suggest on how to improve your prose
 
+## Getting Started
+
+The easiest way to install GitHub Actions Baseline locally is through follow command.
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/tmknom/github-actions-template/main/install.sh | bash -s /path/to/repository
+```
+
+After running, fetch some files automatically.
+
+- Create the workflow files into the `.github/workflows` directory
+- Create the tool configuration files used by workflow into the specified target directory
+
+If you create a new repository, you can create it from this template repository.
+For more information, see [Creating
+a repository from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template).
+
 ## License
 
 Apache 2 Licensed. See LICENSE for full details.
