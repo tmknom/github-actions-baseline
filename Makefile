@@ -149,19 +149,19 @@ format-markdown: ## format markdown by prettier
 # Bump version
 #
 .PHONY: bump-minor
-bump-minor: ## Bump minor version and generate CHANGELOG.md
+bump-minor: ## bump minor version and generate CHANGELOG.md
 	git checkout -b release-$(NEXT_MINOR_VERSION) && \
 	$(STANDARD_VERSION) --release-as minor && \
 	git push --follow-tags origin release-$(NEXT_MINOR_VERSION)
 
 .PHONY: bump-patch
-bump-patch: ## Bump patch version and generate CHANGELOG.md
+bump-patch: ## bump patch version and generate CHANGELOG.md
 	git checkout -b release-$(NEXT_PATCH_VERSION) && \
 	$(STANDARD_VERSION) --release-as patch && \
 	git push --follow-tags origin release-$(NEXT_PATCH_VERSION)
 
 .PHONY: bump-first
-bump-first: ## Bump first version and generate CHANGELOG.md
+bump-first: ## bump first version and generate CHANGELOG.md
 	git checkout -b release-v0.1.0 && \
 	$(STANDARD_VERSION) --release-as 0.1.0 && \
 	git push --follow-tags origin release-v0.1.0
