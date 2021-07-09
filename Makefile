@@ -145,6 +145,10 @@ format-shell: ## format shell by shfmt
 format-markdown: ## format markdown by prettier
 	$(DOCKER_RUN) prettier --write --parser=markdown **/*.md
 
+.PHONY: format-yaml
+format-yaml: ## format yaml by prettier
+	$(DOCKER_RUN) prettier --write --parser=yaml **/*.y*ml
+
 #
 # Bump version
 #
