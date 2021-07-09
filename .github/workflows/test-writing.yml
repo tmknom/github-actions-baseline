@@ -6,7 +6,6 @@ on:
   pull_request:
     paths:
       - '**.md'
-      - '!CHANGELOG.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
