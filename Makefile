@@ -135,6 +135,13 @@ test-writing: ## test writing by write-good, proselint and alex
 	$(DOCKER_RUN) alex '**/*.md'
 
 #
+# Format code
+#
+.PHONY: format-markdown
+format-markdown: ## format markdown by prettier
+	$(DOCKER_RUN) prettier --write --parser=markdown **/*.md
+
+#
 # Bump version
 #
 .PHONY: bump-minor
