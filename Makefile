@@ -123,6 +123,7 @@ test-shell: ## test shell by shellcheck and shfmt
 .PHONY: test-markdown
 test-markdown: ## test markdown by markdownlint and prettier
 	$(DOCKER_RUN) markdownlint --dot **/*.md
+	$(DOCKER_RUN) remark **/*.md
 	$(DOCKER_RUN) prettier --check --parser=markdown **/*.md
 
 .PHONY: test-yaml
