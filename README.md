@@ -2,6 +2,13 @@
 
 A collection of useful GitHub Actions for all kinds of projects
 
+![test-dockerfile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-dockerfile.yml/badge.svg)
+![test-shell](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-shell.yml/badge.svg)
+![test-markdown](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-markdown.yml/badge.svg)
+![test-makefile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml/badge.svg)
+![test-yaml](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml/badge.svg)
+![test-json](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml/badge.svg)
+
 ## Description
 
 GitHub Actions Baseline contains workflow definition that support for linting, format checking, secret scanning and English proofreading.
