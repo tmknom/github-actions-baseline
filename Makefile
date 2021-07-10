@@ -106,8 +106,9 @@ build-standard-version: dockerfiles/standard-version ## build standard-version i
 test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret test-writing ## test all
 
 .PHONY: test-dockerfile
-test-dockerfile: ## test dockerfile by hadolint
+test-dockerfile: ## test dockerfile by hadolint and dockerfilelint
 	find . -name Dockerfile | xargs $(DOCKER_RUN) hadolint/hadolint hadolint
+	find . -name Dockerfile | xargs $(DOCKER_RUN) replicated/dockerfilelint
 
 .PHONY: test-shell
 test-shell: ## test shell by shellcheck and shfmt
