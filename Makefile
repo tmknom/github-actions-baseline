@@ -60,7 +60,11 @@ all: clean build test ## run clean, build and test
 #
 .PHONY: build
 build: build-linter build-proofreading build-prettier build-standard-version ## build all images
+
+.PHONY: build-linter
 build-linter: build-markdownlint build-yamllint build-jsonlint
+
+.PHONY: build-proofreading
 build-proofreading: build-write-good build-proselint build-alex
 
 .PHONY: build-prettier
