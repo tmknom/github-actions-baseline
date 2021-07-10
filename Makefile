@@ -109,7 +109,7 @@ test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret t
 test-dockerfile: ## test dockerfile by hadolint and dockerfilelint
 	find . -name Dockerfile | xargs $(DOCKER_RUN) hadolint/hadolint hadolint
 	find . -name Dockerfile | xargs $(DOCKER_RUN) replicated/dockerfilelint
-	$(DOCKER_RUN) bridgecrew/checkov -d .
+	$(DOCKER_RUN) bridgecrew/checkov --quiet -d .
 
 .PHONY: test-shell
 test-shell: ## test shell by shellcheck and shfmt
