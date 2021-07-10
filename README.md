@@ -71,6 +71,10 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 
 - Check commit messages by [commitlint](https://github.com/conventional-changelog/commitlint)
 
+## Changelog
+
+See [CHANGELOG.md](/CHANGELOG.md) or [Releases page](https://github.com/tmknom/github-actions-baseline/releases).
+
 ## License
 
 Apache 2 Licensed. See LICENSE for full details.
