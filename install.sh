@@ -37,30 +37,24 @@ CONFIG_FILES=(
   .yamllint.yml
 )
 
-# Setup tmpdir
-TMP_INSTALL_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/github-actions-baseline-XXXXXX)
-mkdir -p "${TMP_INSTALL_DIR}"/workflows
-mkdir -p "${TMP_INSTALL_DIR}"/configs
+echo "Started GitHub Actions Baseline install"
 
-# Fetch files
+# Setup directory
+TMP_INSTALL_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/github-actions-baseline-XXXXXX)
+TARGET_WORKFLOWS_DIR="${TARGET_DIR}"/.github/workflows
+mkdir -p "${TARGET_WORKFLOWS_DIR}"
+
+# Fetch and move files
 for file in "${WORKFLOW_FILES[@]}"; do
-  curl -fsSL "${BASE_URL}"/.github/workflows/"${file}" -o "${TMP_INSTALL_DIR}"/workflows/"${file}"
+  curl -fsSL "${BASE_URL}"/.github/workflows/"${file}" -o "${TMP_INSTALL_DIR}"/"${file}"
+  mv "${TMP_INSTALL_DIR}"/"${file}" "${TARGET_WORKFLOWS_DIR}"
+  printf "Created \e[32m%-20s\e[m into %s\n" "${file}" "${TARGET_WORKFLOWS_DIR}"/
 done
 
 for file in "${CONFIG_FILES[@]}"; do
-  curl -fsSL "${BASE_URL}"/"${file}" -o "${TMP_INSTALL_DIR}"/configs/"${file}"
+  curl -fsSL "${BASE_URL}"/"${file}" -o "${TMP_INSTALL_DIR}"/"${file}"
+  mv "${TMP_INSTALL_DIR}"/"${file}" "${TARGET_DIR}"
+  printf "Created \e[32m%-20s\e[m into %s\n" "${file}" "${TARGET_DIR}"/
 done
 
-# Copy files
-mkdir -p "${TARGET_DIR}"/.github/workflows
-cp -r "${TMP_INSTALL_DIR}"/workflows/. "${TARGET_DIR}"/.github/workflows
-cp -r "${TMP_INSTALL_DIR}"/configs/. "${TARGET_DIR}"
-
-# Show fetched files
-printf "\e[32mFetched workflow files at %s/.github/workflows/\n\e[m" "${TARGET_DIR}"
-# shellcheck disable=SC2012
-ls -At "${TARGET_DIR}"/.github/workflows | head -n "${#WORKFLOW_FILES[*]}" | sort
-
-printf "\e[32m\nFetched config files at %s/\n\e[m" "${TARGET_DIR}"
-# shellcheck disable=SC2012
-ls -At "${TARGET_DIR}" | head -n "${#CONFIG_FILES[*]}" | sort
+echo "Finished GitHub Actions Baseline install"
