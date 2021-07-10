@@ -26,6 +26,23 @@ jobs:
       - name: Run markdownlint
         run: markdownlint --dot '**/*.md'
 
+  remark:
+    name: Lint by remark
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install remark
+        run: |
+          sudo npm install -g remark-cli remark-lint remark-preset-lint-markdown-style-guide \
+          remark-preset-lint-recommended remark-preset-lint-consistent \
+          remark-lint-list-item-indent remark-lint-maximum-line-length
+      - name: Display remark
+        run: remark --version
+      - name: Run remark
+        run: remark --frail '**/*.md'
+
   prettier:
     name: Format by prettier
     runs-on: ubuntu-latest
