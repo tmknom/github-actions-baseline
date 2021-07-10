@@ -5,3 +5,6 @@ plugins:
   - # Save space
     - remark-lint-list-item-indent
     - space
+  - # Save space
+    - remark-lint-maximum-line-length
+    - 150
