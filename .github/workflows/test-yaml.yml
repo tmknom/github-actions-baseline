@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  yamllint:
     name: Lint by yamllint
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -27,7 +27,7 @@ jobs:
       - name: Run yamllint
         run: yamllint --strict .
 
-  format:
+  prettier:
     name: Format by prettier
     runs-on: ubuntu-latest
     timeout-minutes: 5

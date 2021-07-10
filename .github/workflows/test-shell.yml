@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  shellcheck:
     name: Lint by shellcheck
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -26,7 +26,7 @@ jobs:
       - name: Run shellcheck
         run: find . -name '*.sh' | xargs docker run --rm -v $(pwd):/mnt koalaman/shellcheck:stable
 
-  format:
+  shfmt:
     name: Format by shfmt
     runs-on: ubuntu-latest
     timeout-minutes: 5

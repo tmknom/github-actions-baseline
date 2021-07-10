@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  commitlint:
     name: Lint by commitlint
     runs-on: ubuntu-latest
     timeout-minutes: 5
