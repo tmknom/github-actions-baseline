@@ -39,3 +39,17 @@ jobs:
         run: docker run --rm replicated/dockerfilelint --version
       - name: Run dockerfilelint
         run: find . -name Dockerfile | xargs docker run --rm -v $(pwd):/work -w /work replicated/dockerfilelint
+
+  checkov:
+    name: Lint by checkov
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install checkov
+        run: docker pull bridgecrew/checkov
+      - name: Display checkov
+        run: docker run --rm bridgecrew/checkov --version
+      - name: Run checkov
+        run: docker run --rm -v $(pwd):/work -w /work bridgecrew/checkov --quiet -d .
