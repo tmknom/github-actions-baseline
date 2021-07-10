@@ -20,7 +20,8 @@ Start from this baseline, then your code will be much more maintainable.
 The easiest way to install GitHub Actions Baseline locally is through follow command.
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/tmknom/github-actions-template/main/install.sh | bash -s /path/to/repository
+curl -fsSL https://raw.githubusercontent.com/tmknom/github-actions-template/main/install.sh \
+ | bash -s /path/to/repository
 ```
 
 After running, fetch some files automatically.
