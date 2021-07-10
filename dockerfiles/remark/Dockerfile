@@ -13,6 +13,7 @@ RUN set -x && \
 USER nonroot
 WORKDIR /work
 ENV PATH $PATH:/app/node_modules/.bin
+ENV NODE_PATH /app/node_modules
 
 ENTRYPOINT ["/app/node_modules/.bin/remark"]
 CMD ["--help"]
