@@ -6,3 +6,5 @@ rules:
     allowed-values: ['true', 'false', 'on']
   line-length:
     max: 120
+  comments:
+    min-spaces-from-content: 1
