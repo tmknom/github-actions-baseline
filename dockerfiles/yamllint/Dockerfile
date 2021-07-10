@@ -8,6 +8,7 @@ RUN set -x && \
     adduser -G nonroot -s /bin/sh -D nonroot && \
     pip install --no-cache-dir -r /app/requirements.txt
 
+# checkov:skip=CKV_DOCKER_2:Healthcheck is not required as it is only used locally or in CI
 USER nonroot
 WORKDIR /work
 
