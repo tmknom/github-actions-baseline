@@ -9,6 +9,7 @@ RUN set -x && \
     npm install && \
     npm cache clean --force
 
+# checkov:skip=CKV_DOCKER_2:Healthcheck is not required as it is only used locally or in CI
 USER nonroot
 WORKDIR /work
 ENV PATH $PATH:/app/node_modules/.bin
