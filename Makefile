@@ -62,7 +62,7 @@ all: clean build test ## run clean, build and test
 build: build-linter build-proofreading build-prettier build-standard-version ## build all images
 
 .PHONY: build-linter
-build-linter: build-markdownlint build-yamllint build-jsonlint
+build-linter: build-markdownlint build-remark build-yamllint build-jsonlint
 
 .PHONY: build-proofreading
 build-proofreading: build-write-good build-proselint build-alex
@@ -73,6 +73,10 @@ build-prettier: dockerfiles/prettier ## build prettier image
 
 .PHONY: build-markdownlint
 build-markdownlint: dockerfiles/markdownlint ## build markdownlint image
+	$(DOCKER_BUILD)
+
+.PHONY: build-remark
+build-remark: dockerfiles/remark ## build remark image
 	$(DOCKER_BUILD)
 
 .PHONY: build-yamllint
