@@ -75,6 +75,10 @@ build-prettier: dockerfiles/prettier ## build prettier image
 build-markdownlint: dockerfiles/markdownlint ## build markdownlint image
 	$(DOCKER_BUILD)
 
+.PHONY: build-remark
+build-remark: dockerfiles/remark ## build remark image
+	$(DOCKER_BUILD)
+
 .PHONY: build-yamllint
 build-yamllint: dockerfiles/yamllint ## build yamllint image
 	$(DOCKER_BUILD)
