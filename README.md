@@ -82,6 +82,10 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 
 See [CHANGELOG.md](/CHANGELOG.md) or [Releases page](https://github.com/tmknom/github-actions-baseline/releases).
 
+## Author
+
+- [@tmknom](https://github.com/tmknom/)
+
 ## License
 
 Apache 2 Licensed. See LICENSE for full details.
