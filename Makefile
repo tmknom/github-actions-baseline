@@ -45,9 +45,23 @@ STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
                     -e GIT_COMMITTER_NAME="$(GIT_USER_NAME)" -e GIT_COMMITTER_EMAIL="$(GIT_USER_EMAIL)" \
                     -e GIT_AUTHOR_NAME="$(GIT_USER_NAME)" -e GIT_AUTHOR_EMAIL="$(GIT_USER_EMAIL)" standard-version
 
-NEXT_MINOR_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as minor | $(GREP_AND_CUT_TAG))
-NEXT_PATCH_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as patch | $(GREP_AND_CUT_TAG))
-GREP_AND_CUT_TAG ?= grep tagging | cut -d " " -f 4
+#
+# Macros to be used by standard-version commands
+#
+define bump
+	@release_type="$(1)" && \
+	dry_run=$$($(STANDARD_VERSION) --dry-run --release-as $${release_type}) && \
+	version=$$(echo "$${dry_run}" | grep tagging | cut -d " " -f 4) && \
+	branch=release-$${version} && \
+	set -x && \
+	$(STANDARD_VERSION) --skip.commit --skip.tag --release-as $${release_type} && \
+	$(MAKE) format-markdown && \
+	git checkout -b $${branch} && \
+	git add CHANGELOG.md && \
+	git commit -m "chore(release): $${version}" && \
+	git tag $${version} && \
+	git push --follow-tags origin $${branch} $${version}
+endef
 
 #
 # All
@@ -174,21 +188,15 @@ format-json: ## format json by prettier
 #
 .PHONY: bump-minor
 bump-minor: ## bump minor version and generate CHANGELOG.md
-	git checkout -b release-$(NEXT_MINOR_VERSION) && \
-	$(STANDARD_VERSION) --release-as minor && \
-	git push --follow-tags origin release-$(NEXT_MINOR_VERSION)
+	$(call bump,minor)
 
 .PHONY: bump-patch
 bump-patch: ## bump patch version and generate CHANGELOG.md
-	git checkout -b release-$(NEXT_PATCH_VERSION) && \
-	$(STANDARD_VERSION) --release-as patch && \
-	git push --follow-tags origin release-$(NEXT_PATCH_VERSION)
+	$(call bump,patch)
 
 .PHONY: bump-first
 bump-first: ## bump first version and generate CHANGELOG.md
-	git checkout -b release-v0.1.0 && \
-	$(STANDARD_VERSION) --release-as 0.1.0 && \
-	git push --follow-tags origin release-v0.1.0
+	$(call bump,v0.1.0)
 
 #
 # Clean
