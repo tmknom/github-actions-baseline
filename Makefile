@@ -192,9 +192,7 @@ bump-minor: ## bump minor version and generate CHANGELOG.md
 
 .PHONY: bump-patch
 bump-patch: ## bump patch version and generate CHANGELOG.md
-	git checkout -b release-$(NEXT_PATCH_VERSION) && \
-	$(STANDARD_VERSION) --release-as patch && \
-	git push --follow-tags origin release-$(NEXT_PATCH_VERSION)
+	$(call bump,patch)
 
 .PHONY: bump-first
 bump-first: ## bump first version and generate CHANGELOG.md
