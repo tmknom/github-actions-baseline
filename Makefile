@@ -203,6 +203,14 @@ bump-first: ## bump first version and generate CHANGELOG.md
 	$(call bump,v0.1.0)
 
 #
+# Manage documents
+#
+.PHONY: docs
+docs: ## manage documents
+	$(DOCKER_RUN) --entrypoint=/app/gh-md-toc evkalinin/gh-md-toc:0.7.0 --insert --no-backup README.md
+	$(MAKE) format-markdown
+
+#
 # Clean
 #
 .PHONY: clean
