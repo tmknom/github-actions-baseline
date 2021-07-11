@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo npm install -g remark-cli remark-lint remark-preset-lint-markdown-style-guide \
           remark-preset-lint-recommended remark-preset-lint-consistent \
-          remark-lint-list-item-indent remark-lint-maximum-line-length
+          remark-lint-list-item-spacing remark-lint-list-item-indent remark-lint-maximum-line-length
       - name: Display remark
         run: remark --version
       - name: Run remark
