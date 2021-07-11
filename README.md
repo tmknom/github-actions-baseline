@@ -44,7 +44,7 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 
 ### Test Dockerfile
 
-- Lint by [hadolint](https://github.com/hadolint/hadolint)
+- Lint by [hadolint](https://github.com/hadolint/hadolint), [dockerfilelint](https://github.com/replicatedhq/dockerfilelint) and [checkov](https://github.com/bridgecrewio/checkov)
 
 ### Test Shell
 
