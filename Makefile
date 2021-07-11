@@ -188,9 +188,7 @@ format-json: ## format json by prettier
 #
 .PHONY: bump-minor
 bump-minor: ## bump minor version and generate CHANGELOG.md
-	git checkout -b release-$(NEXT_MINOR_VERSION) && \
-	$(STANDARD_VERSION) --release-as minor && \
-	git push --follow-tags origin release-$(NEXT_MINOR_VERSION)
+	$(call bump,minor)
 
 .PHONY: bump-patch
 bump-patch: ## bump patch version and generate CHANGELOG.md
