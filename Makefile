@@ -39,6 +39,11 @@ DOCKER_BUILD ?= $(DOCKER) build -t $(<F) $<
 DOCKER_RUN ?= $(DOCKER) run -i --rm -v $(CURDIR):/work -w /work
 
 #
+# Variables to be used by test writing
+#
+MARKDOWN_FILES ?= $(shell find . -name '*.md')
+
+#
 # Variables to be used by standard-version commands
 #
 STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
