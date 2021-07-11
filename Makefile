@@ -196,9 +196,7 @@ bump-patch: ## bump patch version and generate CHANGELOG.md
 
 .PHONY: bump-first
 bump-first: ## bump first version and generate CHANGELOG.md
-	git checkout -b release-v0.1.0 && \
-	$(STANDARD_VERSION) --release-as 0.1.0 && \
-	git push --follow-tags origin release-v0.1.0
+	$(call bump,v0.1.0)
 
 #
 # Clean
