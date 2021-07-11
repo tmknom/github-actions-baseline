@@ -186,6 +186,10 @@ format-json: ## format json by prettier
 #
 # Bump version
 #
+.PHONY: bump-major
+bump-major: ## bump major version and generate CHANGELOG.md
+	$(call bump,major)
+
 .PHONY: bump-minor
 bump-minor: ## bump minor version and generate CHANGELOG.md
 	$(call bump,minor)
