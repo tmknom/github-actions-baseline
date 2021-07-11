@@ -115,6 +115,12 @@ make test
 
 Select the release type, and run one of the following command.
 
+**Major version up**:
+
+```shell
+make bump-major
+```
+
 **Minor version up**:
 
 ```shell
