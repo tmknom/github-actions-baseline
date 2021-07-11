@@ -24,7 +24,9 @@ jobs:
       - name: Display write-good
         run: write-good --version
       - name: Run write-good
-        run: find . -name '*.md' | xargs write-good
+        run: |
+          MARKDOWN_FILES=$(find . -name '*.md')
+          write-good ${MARKDOWN_FILES}
 
   proselint:
     name: Lint by proselint
@@ -38,7 +40,9 @@ jobs:
       - name: Display proselint
         run: proselint --version
       - name: Run proselint
-        run: find . -name '*.md' | xargs proselint
+        run: |
+          MARKDOWN_FILES=$(find . -name '*.md')
+          proselint ${MARKDOWN_FILES}
 
   alex:
     name: Lint by alex
@@ -52,4 +56,6 @@ jobs:
       - name: Display alex
         run: alex --version
       - name: Run alex
-        run: alex '**/*.md'
+        run: |
+          MARKDOWN_FILES=$(find . -name '*.md')
+          alex ${MARKDOWN_FILES}
