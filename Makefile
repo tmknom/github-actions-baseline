@@ -60,7 +60,7 @@ define bump
 	git add CHANGELOG.md && \
 	git commit -m "chore(release): $${version}" && \
 	git tag $${version} && \
-	git push --follow-tags origin $${branch} $${version}
+	git push origin $${branch} $${version}
 endef
 
 #
