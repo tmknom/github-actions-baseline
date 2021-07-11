@@ -78,6 +78,65 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 
 - Check commit messages by [commitlint](https://github.com/conventional-changelog/commitlint)
 
+## Developer Guide
+
+### Requirements
+
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Docker](https://docs.docker.com/get-docker/)
+
+### Setup
+
+<!-- lint disable ordered-list-marker-value -->
+
+1. Clone repository
+
+   ```shell
+   git clone git@github.com:tmknom/github-actions-baseline.git
+   ```
+
+2. Build docker images that uses when test locally
+
+   ```shell
+   make build
+   ```
+
+<!-- lint enable ordered-list-marker-value -->
+
+### Test
+
+Run test locally using the docker image built during setup.
+
+```shell
+make test
+```
+
+### Release
+
+Select the release type, and run one of the following command.
+
+**Minor version up**:
+
+```shell
+make bump-minor
+```
+
+**Patch version up**:
+
+```shell
+make bump-patch
+```
+
+These commands perform the following process.
+
+- Bump version
+- Generate CHANGELOG.md
+- Create new tag
+- Push release branch
+
+Then you can create a new Pull Request in GitHub, review updated CHANGELOG.md and merge.
+After merged, the release workflow to update Releases page will run automatically.
+
 ## Changelog
 
 See [CHANGELOG.md](/CHANGELOG.md) or [Releases page](https://github.com/tmknom/github-actions-baseline/releases).
