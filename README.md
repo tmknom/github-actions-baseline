@@ -15,6 +15,34 @@ GitHub Actions Baseline contains workflow definition that support for linting, f
 The workflow keeps clean for Dockerfile, Shell, Markdown, YAML and JSON.
 Start from this baseline, then your code will be much more maintainable.
 
+<!--ts-->
+
+- [GitHub Actions Baseline](#github-actions-baseline)
+  - [Description](#description)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Supported Workflows](#supported-workflows)
+    - [Test Dockerfile](#test-dockerfile)
+    - [Test Shell](#test-shell)
+    - [Test Markdown](#test-markdown)
+    - [Test YAML](#test-yaml)
+    - [Test JSON](#test-json)
+    - [Test Secret](#test-secret)
+    - [Test Writing](#test-writing)
+    - [Test Commit](#test-commit)
+  - [Developer Guide](#developer-guide)
+    - [Requirements](#requirements)
+    - [Setup](#setup)
+    - [Test](#test)
+    - [Release](#release)
+  - [Changelog](#changelog)
+  - [Author](#author)
+  - [License](#license)
+
+<!-- Added by: root, at: Sun Jul 11 07:21:17 UTC 2021 -->
+
+<!--te-->
+
 ## Features
 
 - **Linting**: Support for Dockerfile, Shell, Markdown, Makefile, YAML, JSON
