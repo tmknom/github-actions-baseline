@@ -45,10 +45,6 @@ STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
                     -e GIT_COMMITTER_NAME="$(GIT_USER_NAME)" -e GIT_COMMITTER_EMAIL="$(GIT_USER_EMAIL)" \
                     -e GIT_AUTHOR_NAME="$(GIT_USER_NAME)" -e GIT_AUTHOR_EMAIL="$(GIT_USER_EMAIL)" standard-version
 
-NEXT_MINOR_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as minor | $(GREP_AND_CUT_TAG))
-NEXT_PATCH_VERSION ?= $(shell $(STANDARD_VERSION) --dry-run --release-as patch | $(GREP_AND_CUT_TAG))
-GREP_AND_CUT_TAG ?= grep tagging | cut -d " " -f 4
-
 #
 # All
 #
