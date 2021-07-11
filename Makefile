@@ -46,6 +46,24 @@ STANDARD_VERSION ?= $(DOCKER_RUN) -v "$${TMPDIR}:/work/.git/hooks" \
                     -e GIT_AUTHOR_NAME="$(GIT_USER_NAME)" -e GIT_AUTHOR_EMAIL="$(GIT_USER_EMAIL)" standard-version
 
 #
+# Macros to be used by standard-version commands
+#
+define bump
+	@release_type="$(1)" && \
+	dry_run=$$($(STANDARD_VERSION) --dry-run --release-as $${release_type}) && \
+	version=$$(echo "$${dry_run}" | grep tagging | cut -d " " -f 4) && \
+	branch=release-$${version} && \
+	set -x && \
+	$(STANDARD_VERSION) --skip.commit --skip.tag --release-as $${release_type} && \
+	$(MAKE) format-markdown && \
+	git checkout -b $${branch} && \
+	git add CHANGELOG.md && \
+	git commit -m "chore(release): $${version}" && \
+	git tag $${version} && \
+	git push --follow-tags origin $${branch} $${version}
+endef
+
+#
 # All
 #
 .PHONY: all
