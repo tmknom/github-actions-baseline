@@ -2,6 +2,7 @@ name: Test Makefile
 on:
   push:
     branches:
+      - release-*
       - test-github-actions
   pull_request:
     paths:
