@@ -188,8 +188,7 @@ docs: ## manage documents
 # Clean
 #
 .PHONY: clean
-clean: ## docker rmi for all images
-	ls dockerfiles | xargs $(DOCKER) rmi
+clean: $(CLEAN_TARGETS) ## docker rmi for all images
 
 .PHONY: $(CLEAN_TARGETS)
 $(CLEAN_TARGETS):
