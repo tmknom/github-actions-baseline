@@ -2,6 +2,7 @@ name: Test Markdown
 on:
   push:
     branches:
+      - release-*
       - test-github-actions
   pull_request:
     paths:
