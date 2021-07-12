@@ -197,6 +197,15 @@ $(CLEAN_TARGETS):
 #
 # Help
 #
+.PHONY: help-all
+help-all: ## show help all
+	@printf "\033[35mGeneral targets:\033[0m\n"
+	@$(MAKE) help
+	@printf "\n\033[35mBuild specified images:\033[0m\n"
+	@$(MAKE) help-build
+	@printf "\n\033[35mClean specified images:\033[0m\n"
+	@$(MAKE) help-clean
+
 .PHONY: help
 help: ## show help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
