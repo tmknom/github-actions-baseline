@@ -194,8 +194,26 @@ clean: $(CLEAN_TARGETS) ## docker rmi for all images
 $(CLEAN_TARGETS):
 	IMAGE_NAME=$(patsubst clean-%,%,$@) && $(DOCKER) rmi $${IMAGE_NAME}
 
-# Self-Documented Makefile
-# https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+#
+# Help
+#
+.PHONY: help-all
+help-all: ## show help all
+	@printf "\033[35mGeneral targets:\033[0m\n"
+	@$(MAKE) help
+	@printf "\n\033[35mBuild specified images:\033[0m\n"
+	@$(MAKE) help-build
+	@printf "\n\033[35mClean specified images:\033[0m\n"
+	@$(MAKE) help-clean
+
 .PHONY: help
 help: ## show help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: help-build
+help-build:
+	@echo $(BUILD_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
+
+.PHONY: help-clean
+help-clean:
+	@echo $(CLEAN_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
