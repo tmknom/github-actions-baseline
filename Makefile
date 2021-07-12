@@ -27,6 +27,7 @@ SHELL := /bin/bash
 #
 DOCKERFILES ?= $(shell ls dockerfiles | sort)
 BUILD_TARGETS ?= $(patsubst %,build-%,$(DOCKERFILES))
+CLEAN_TARGETS ?= $(patsubst %,clean-%,$(DOCKERFILES))
 
 #
 # Variables for the current git attributes
@@ -187,8 +188,11 @@ docs: ## manage documents
 # Clean
 #
 .PHONY: clean
-clean: ## docker rmi for all images
-	ls dockerfiles | xargs $(DOCKER) rmi
+clean: $(CLEAN_TARGETS) ## docker rmi for all images
+
+.PHONY: $(CLEAN_TARGETS)
+$(CLEAN_TARGETS):
+	IMAGE_NAME=$(patsubst clean-%,%,$@) && $(DOCKER) rmi $${IMAGE_NAME}
 
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
