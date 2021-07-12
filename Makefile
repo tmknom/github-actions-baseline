@@ -23,6 +23,12 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 #
+# Variables for the phony targets
+#
+DOCKERFILES ?= $(shell ls dockerfiles | sort)
+BUILD_TARGETS ?= $(patsubst %,build-%,$(DOCKERFILES))
+
+#
 # Variables for the current git attributes
 #
 BASE_BRANCH ?= main
