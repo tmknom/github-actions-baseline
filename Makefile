@@ -23,6 +23,12 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 #
+# Variables for the phony targets
+#
+DOCKERFILES ?= $(shell ls dockerfiles | sort)
+BUILD_TARGETS ?= $(patsubst %,build-%,$(DOCKERFILES))
+
+#
 # Variables for the current git attributes
 #
 BASE_BRANCH ?= main
@@ -78,49 +84,11 @@ all: clean build test ## run clean, build and test
 # Build docker images
 #
 .PHONY: build
-build: build-linter build-proofreading build-prettier build-standard-version ## build all images
+build: $(BUILD_TARGETS) ## build all images
 
-.PHONY: build-linter
-build-linter: build-markdownlint build-remark build-yamllint build-jsonlint
-
-.PHONY: build-proofreading
-build-proofreading: build-write-good build-proselint build-alex
-
-.PHONY: build-prettier
-build-prettier: dockerfiles/prettier ## build prettier image
-	$(DOCKER_BUILD)
-
-.PHONY: build-markdownlint
-build-markdownlint: dockerfiles/markdownlint ## build markdownlint image
-	$(DOCKER_BUILD)
-
-.PHONY: build-remark
-build-remark: dockerfiles/remark ## build remark image
-	$(DOCKER_BUILD)
-
-.PHONY: build-yamllint
-build-yamllint: dockerfiles/yamllint ## build yamllint image
-	$(DOCKER_BUILD)
-
-.PHONY: build-jsonlint
-build-jsonlint: dockerfiles/jsonlint ## build jsonlint image
-	$(DOCKER_BUILD)
-
-.PHONY: build-write-good
-build-write-good: dockerfiles/write-good ## build write-good image
-	$(DOCKER_BUILD)
-
-.PHONY: build-proselint
-build-proselint: dockerfiles/proselint ## build proselint image
-	$(DOCKER_BUILD)
-
-.PHONY: build-alex
-build-alex: dockerfiles/alex ## build alex image
-	$(DOCKER_BUILD)
-
-.PHONY: build-standard-version
-build-standard-version: dockerfiles/standard-version ## build standard-version image
-	$(DOCKER_BUILD)
+.PHONY: $(BUILD_TARGETS)
+$(BUILD_TARGETS):
+	IMAGE_NAME=$(patsubst build-%,%,$@) && $(DOCKER) build -t $${IMAGE_NAME} dockerfiles/$${IMAGE_NAME}
 
 #
 # Tests
