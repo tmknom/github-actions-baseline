@@ -41,7 +41,7 @@ jobs:
       - name: Display remark
         run: remark --version
       - name: Run remark
-        run: remark --frail '**/*.md'
+        run: remark --frail --silently-ignore '**/*.md'
 
   prettier:
     name: Format by prettier
