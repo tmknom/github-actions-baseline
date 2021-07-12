@@ -25,7 +25,7 @@ jobs:
         run: write-good --version
       - name: Run write-good
         run: |
-          MARKDOWN_FILES=$(find . -name '*.md')
+          MARKDOWN_FILES=$(find . -not -path './CHANGELOG.md' -name '*.md')
           write-good ${MARKDOWN_FILES}
 
   proselint:
@@ -41,7 +41,7 @@ jobs:
         run: proselint --version
       - name: Run proselint
         run: |
-          MARKDOWN_FILES=$(find . -name '*.md')
+          MARKDOWN_FILES=$(find . -not -path './CHANGELOG.md' -name '*.md')
           proselint ${MARKDOWN_FILES}
 
   alex:
@@ -57,5 +57,5 @@ jobs:
         run: alex --version
       - name: Run alex
         run: |
-          MARKDOWN_FILES=$(find . -name '*.md')
+          MARKDOWN_FILES=$(find . -not -path './CHANGELOG.md' -name '*.md')
           alex ${MARKDOWN_FILES}
