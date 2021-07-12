@@ -204,3 +204,7 @@ help: ## show help
 .PHONY: help-build
 help-build:
 	@echo $(BUILD_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
+
+.PHONY: help-clean
+help-clean:
+	@echo $(CLEAN_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
