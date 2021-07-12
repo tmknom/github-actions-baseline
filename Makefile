@@ -191,6 +191,10 @@ docs: ## manage documents
 clean: ## docker rmi for all images
 	ls dockerfiles | xargs $(DOCKER) rmi
 
+.PHONY: $(CLEAN_TARGETS)
+$(CLEAN_TARGETS):
+	IMAGE_NAME=$(patsubst clean-%,%,$@) && $(DOCKER) rmi $${IMAGE_NAME}
+
 # Self-Documented Makefile
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
