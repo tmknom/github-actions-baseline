@@ -200,3 +200,7 @@ $(CLEAN_TARGETS):
 .PHONY: help
 help: ## show help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: help-build
+help-build:
+	@echo $(BUILD_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
