@@ -84,13 +84,7 @@ all: clean build test ## run clean, build and test
 # Build docker images
 #
 .PHONY: build
-build: build-linter build-proofreading build-prettier build-standard-version ## build all images
-
-.PHONY: build-linter
-build-linter: build-markdownlint build-remark build-yamllint build-jsonlint
-
-.PHONY: build-proofreading
-build-proofreading: build-write-good build-proselint build-alex
+build: $(BUILD_TARGETS) ## build all images
 
 .PHONY: $(BUILD_TARGETS)
 $(BUILD_TARGETS):
