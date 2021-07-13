@@ -114,6 +114,10 @@ test-markdown: ## test markdown by markdownlint, remark and prettier
 	$(DOCKER_RUN) remark --silently-ignore **/*.md
 	$(DOCKER_RUN) prettier --check --parser=markdown **/*.md
 
+.PHONY: test-makefile
+test-makefile: ## test makefile by checkmake
+	find . -name Makefile | xargs -I {} $(DOCKER_RUN) checkmake {}
+
 .PHONY: test-yaml
 test-yaml: ## test yaml by yamllint and prettier
 	$(DOCKER_RUN) yamllint --strict .
