@@ -109,7 +109,7 @@ test-shell: ## test shell by shellcheck and shfmt
 	$(DOCKER_RUN) mvdan/shfmt -i 2 -ci -bn -d .
 
 .PHONY: test-markdown
-test-markdown: ## test markdown by markdownlint and prettier
+test-markdown: ## test markdown by markdownlint, remark and prettier
 	$(DOCKER_RUN) markdownlint --dot **/*.md
 	$(DOCKER_RUN) remark --silently-ignore **/*.md
 	$(DOCKER_RUN) prettier --check --parser=markdown **/*.md
