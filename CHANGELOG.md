@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/tmknom/github-actions-devops/compare/v0.1.0...v0.2.0) (2021-07-13)
+
+### Features
+
+- add support for checkmake ([9ea0d3f](https://github.com/tmknom/github-actions-devops/commit/9ea0d3f49f6b97c7f61301be212fdc2f4cf5d3c0))
+- add support for checkov ([8de0166](https://github.com/tmknom/github-actions-devops/commit/8de016641ab91cb78790680ecfab81aa8b9fe59d))
+- add support for dockerfilelint ([28673a8](https://github.com/tmknom/github-actions-devops/commit/28673a8e43f27d1a9998183eb4525fc5dbfc87ce))
+- add support for remark ([1868aec](https://github.com/tmknom/github-actions-devops/commit/1868aecc97fcda6d8c880f311170157ecb587432))
+
 ## 0.1.0 (2021-07-08)
 
 ### Features
