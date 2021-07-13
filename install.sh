@@ -33,6 +33,7 @@ WORKFLOW_FILES=(
 CONFIG_FILES=(
   .commitlintrc.yml
   .markdownlint.yml
+  .remarkrc.yml
   .prettierrc.yml
   .yamllint.yml
 )
