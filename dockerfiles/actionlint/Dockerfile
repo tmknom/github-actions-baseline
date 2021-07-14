@@ -1,4 +1,4 @@
-FROM golang:1.16 as build-env
+FROM golang:1.16 as build-actionlint
 
 WORKDIR /app
 
@@ -30,7 +30,7 @@ RUN set -x && \
 
 FROM alpine:3.14.0
 
-COPY --from=build-env /app/actionlint /usr/local/bin/actionlint
+COPY --from=build-actionlint /app/actionlint /usr/local/bin/actionlint
 COPY --from=build-shellcheck /app/shellcheck-stable/shellcheck /usr/local/bin/shellcheck
 
 RUN set -x && \
