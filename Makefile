@@ -95,7 +95,7 @@ $(BUILD_TARGETS):
 # Tests
 #
 .PHONY: test
-test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret test-writing ## test all
+test: test-dockerfile test-shell test-markdown test-yaml test-json test-github-actions test-secret test-writing ## test all
 
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint and dockerfilelint
