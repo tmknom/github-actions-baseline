@@ -130,7 +130,7 @@ test-json: ## test json by jsonlint and prettier
 
 .PHONY: test-github-actions
 test-github-actions: ## test Github Actions by actionlint
-	$(DOCKER_RUN) actionlint
+	$(DOCKER_RUN) actionlint -color
 
 .PHONY: test-secret
 test-secret: ## test secret by secretlint
