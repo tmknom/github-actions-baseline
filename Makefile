@@ -95,7 +95,7 @@ $(BUILD_TARGETS):
 # Tests
 #
 .PHONY: test
-test: test-dockerfile test-shell test-markdown test-yaml test-json test-secret test-writing ## test all
+test: test-dockerfile test-shell test-markdown test-yaml test-json test-github-actions test-secret test-writing ## test all
 
 .PHONY: test-dockerfile
 test-dockerfile: ## test dockerfile by hadolint and dockerfilelint
@@ -127,6 +127,10 @@ test-yaml: ## test yaml by yamllint and prettier
 test-json: ## test json by jsonlint and prettier
 	find . -name '*.json' | xargs -I {} $(DOCKER_RUN) jsonlint --quiet --compact {}
 	$(DOCKER_RUN) prettier --check --parser=json **/*.json
+
+.PHONY: test-github-actions
+test-github-actions: ## test Github Actions by actionlint
+	$(DOCKER_RUN) actionlint
 
 .PHONY: test-secret
 test-secret: ## test secret by secretlint
