@@ -1,0 +1,30 @@
+name: Test GitHub Actions
+on:
+  push:
+    branches:
+      - release-*
+      - test-github-actions
+  pull_request:
+    paths:
+      - '.github/workflows/**.yml'
+      - '.github/workflows/**.yaml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  actionlint:
+    name: Lint by actionlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+      - name: Display actionlint
+        run: ./actionlint --version
+      - name: Run actionlint
+        # The colon specified in the shellcheck option is a workaround to disable shellcheck
+        run: ./actionlint -color -shellcheck ':'
