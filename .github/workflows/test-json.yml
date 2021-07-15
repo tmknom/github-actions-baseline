@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - release-*
-      - test-github-actions
+      - test-json
   pull_request:
     paths:
       - '**.json'
