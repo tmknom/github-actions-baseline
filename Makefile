@@ -178,6 +178,14 @@ trigger: ## trigger all test workflows in GitHub Actions
 	git branch release-test-all -d
 	git push origin release-test-all -d
 
+.PHONY: $(TRIGGER_TARGETS)
+$(TRIGGER_TARGETS):
+	WORKFLOW_NAME=$(patsubst trigger-%,%,$@) && \
+	git branch $${WORKFLOW_NAME} && \
+	git push origin $${WORKFLOW_NAME} && \
+	git branch $${WORKFLOW_NAME} -d && \
+	git push origin $${WORKFLOW_NAME} -d
+
 #
 # Bump version
 #
