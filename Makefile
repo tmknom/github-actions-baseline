@@ -227,7 +227,7 @@ $(CLEAN_TARGETS):
 # Help
 #
 .PHONY: help-all
-help-all: help help-build help-clean ## show help all
+help-all: help help-build help-clean help-trigger ## show help all
 
 .PHONY: help
 help: ## show help
@@ -242,3 +242,8 @@ help-build:
 help-clean:
 	@printf "\n\033[35mClean specified images:\033[0m\n"
 	@echo $(CLEAN_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
+
+.PHONY: help-trigger
+help-trigger:
+	@printf "\n\033[35mTrigger specified workflows in GitHub Actions:\033[0m\n"
+	@echo $(TRIGGER_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s workflow\n", $$1, s}'
