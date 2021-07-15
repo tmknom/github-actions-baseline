@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - release-*
-      - test-github-actions
+      - test-dockerfile
   pull_request:
     paths:
       - '**/Dockerfile'

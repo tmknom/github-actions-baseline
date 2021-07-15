@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - release-*
-      - test-github-actions
+      - test-markdown
   pull_request:
     paths:
       - '**.md'
