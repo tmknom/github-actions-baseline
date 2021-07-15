@@ -26,8 +26,8 @@ jobs:
         run: docker run --rm hadolint/hadolint hadolint --version
       - name: Run hadolint
         run: |
-          find . -name Dockerfile | \
-          xargs docker run --rm -v "$(pwd)":/work -w /work hadolint/hadolint hadolint
+          find . -name Dockerfile -print0 | \
+          xargs -0 -I {} docker run --rm -v "$(pwd)":/work -w /work hadolint/hadolint hadolint {}
 
   dockerfilelint:
     name: Lint by dockerfilelint
@@ -42,8 +42,8 @@ jobs:
         run: docker run --rm replicated/dockerfilelint --version
       - name: Run dockerfilelint
         run: |
-          find . -name Dockerfile | \
-          xargs docker run --rm -v "$(pwd)":/work -w /work replicated/dockerfilelint
+          find . -name Dockerfile -print0 | \
+          xargs -0 -I {} docker run --rm -v "$(pwd)":/work -w /work replicated/dockerfilelint {}
 
   checkov:
     name: Lint by checkov
