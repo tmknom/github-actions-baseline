@@ -166,6 +166,16 @@ format-json: ## format json by prettier
 	$(DOCKER_RUN) prettier --write --parser=json **/*.json
 
 #
+# Trigger test workflow in GitHub Actions
+#
+.PHONY: trigger
+trigger: ## trigger all test workflows in GitHub Actions
+	git branch release-test-all
+	git push origin release-test-all
+	git branch release-test-all -d
+	git push origin release-test-all -d
+
+#
 # Bump version
 #
 .PHONY: bump-major
