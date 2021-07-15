@@ -227,7 +227,7 @@ $(CLEAN_TARGETS):
 # Help
 #
 .PHONY: help-all
-help-all: help help-build help-clean ## show help all
+help-all: help help-build help-clean help-trigger ## show help all
 
 .PHONY: help
 help: ## show help
