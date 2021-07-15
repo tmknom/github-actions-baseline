@@ -29,6 +29,9 @@ DOCKERFILES ?= $(shell ls dockerfiles | sort)
 BUILD_TARGETS ?= $(patsubst %,build-%,$(DOCKERFILES))
 CLEAN_TARGETS ?= $(patsubst %,clean-%,$(DOCKERFILES))
 
+WORKFLOW_FILES ?= $(shell find .github/workflows -name 'test-*.yml' | awk -F/ '{sub(".yml", "")}{print $$NF}' | sort)
+TRIGGER_TARGETS ?= $(patsubst %,trigger-%,$(WORKFLOW_FILES))
+
 #
 # Variables for the current git attributes
 #
