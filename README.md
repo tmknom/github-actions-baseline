@@ -98,6 +98,10 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 - Lint by [jsonlint](https://github.com/zaach/jsonlint)
 - Check formatting by [prettier](https://github.com/prettier/prettier)
 
+### Test GitHub Actions
+
+- Lint by [actionlint](https://github.com/rhysd/actionlint)
+
 ### Test Secret
 
 - Detect secret by [secretlint](https://github.com/secretlint/secretlint) and [gitleaks](https://github.com/zricethezav/gitleaks)
