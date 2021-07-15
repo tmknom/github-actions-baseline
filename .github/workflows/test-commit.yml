@@ -27,7 +27,9 @@ jobs:
       - name: Fetch base branch
         run: git fetch --no-tags --depth=1 origin main
       - name: Run commitlint
-        run: commitlint --from $(git merge-base origin/main HEAD) --to ${{ github.sha }} --verbose
+        run: |
+          base_sha=$(git merge-base origin/main HEAD)
+          commitlint --from "${base_sha}" --to ${{ github.sha }} --verbose
       - name: Run commitlint for pull request
         if: ${{ github.event_name == 'pull_request' }}
         run: echo "${TITLE}" | commitlint --verbose
