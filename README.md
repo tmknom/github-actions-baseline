@@ -84,6 +84,10 @@ a repository from a template](https://docs.github.com/en/github/creating-cloning
 - Lint by [markdownlint](https://github.com/DavidAnson/markdownlint) and [remark](https://github.com/remarkjs/remark)
 - Check formatting by [prettier](https://github.com/prettier/prettier)
 
+### Test Makefile
+
+- Lint by [checkmake](https://github.com/mrtazz/checkmake)
+
 ### Test YAML
 
 - Lint by [yamllint](https://github.com/adrienverge/yamllint)
