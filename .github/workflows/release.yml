@@ -23,7 +23,7 @@ jobs:
       - name: Create body
         id: body
         run: |
-          body=$(grep -A 100000 -E '## .+[0-9]' CHANGELOG.md | sed '1d' | grep -B 100000 -E '## .+[0-9]' | sed '$d')
+          body=$(grep -A 100000 -E '## .+[0-9]' CHANGELOG.md | sed '1d' | grep -m1 -B 100000 -E '## .+[0-9]' | sed '$d')
           body="${body//$'\n'/\\n}"
           echo "::set-output name=value::${body}"
       - name: Release
