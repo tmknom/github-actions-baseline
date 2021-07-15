@@ -39,4 +39,4 @@ jobs:
       - name: Display shfmt
         run: docker run --rm mvdan/shfmt --version
       - name: Run shfmt
-        run: docker run --rm -v $(pwd):/work -w /work mvdan/shfmt -i 2 -ci -bn -d .
+        run: docker run --rm -v "$(pwd)":/work -w /work mvdan/shfmt -i 2 -ci -bn -d .
