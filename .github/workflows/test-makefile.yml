@@ -26,10 +26,10 @@ jobs:
           BUILDER_EMAIL: dummy
         run: |
           sudo apt-get install pandoc
-          git clone https://github.com/mrtazz/checkmake ${RUNNER_TEMP}/bin
-          cd ${RUNNER_TEMP}/bin
+          git clone https://github.com/mrtazz/checkmake "${RUNNER_TEMP}"/bin
+          cd "${RUNNER_TEMP}"/bin
           make
       - name: Display checkmake
-        run: ${RUNNER_TEMP}/bin/checkmake --version
+        run: "${RUNNER_TEMP}"/bin/checkmake --version
       - name: Run checkmake
-        run: find . -name Makefile | xargs -I {} ${RUNNER_TEMP}/bin/checkmake {}
+        run: find . -name Makefile | xargs -I {} "${RUNNER_TEMP}"/bin/checkmake {}
