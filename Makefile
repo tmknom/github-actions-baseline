@@ -216,13 +216,7 @@ $(CLEAN_TARGETS):
 # Help
 #
 .PHONY: help-all
-help-all: ## show help all
-	@printf "\033[35mGeneral targets:\033[0m\n"
-	@$(MAKE) help
-	@printf "\n\033[35mBuild specified images:\033[0m\n"
-	@$(MAKE) help-build
-	@printf "\n\033[35mClean specified images:\033[0m\n"
-	@$(MAKE) help-clean
+help-all: help help-build help-clean ## show help all
 
 .PHONY: help
 help: ## show help
@@ -230,8 +224,10 @@ help: ## show help
 
 .PHONY: help-build
 help-build:
+	@printf "\n\033[35mBuild specified images:\033[0m\n"
 	@echo $(BUILD_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
 
 .PHONY: help-clean
 help-clean:
+	@printf "\n\033[35mClean specified images:\033[0m\n"
 	@echo $(CLEAN_TARGETS) | sed 's/ /\n/g' | sort | awk '{s=$$1; sub(/-/," ",s); printf "\033[36m%-30s\033[0m %s image\n", $$1, s}'
