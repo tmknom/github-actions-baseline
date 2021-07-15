@@ -21,6 +21,7 @@ fi
 WORKFLOW_FILES=(
   test-commit.yml
   test-dockerfile.yml
+  test-github-actions.yml
   test-json.yml
   test-makefile.yml
   test-markdown.yml
