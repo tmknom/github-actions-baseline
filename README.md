@@ -8,6 +8,11 @@ A collection of useful GitHub Actions for all kinds of projects
 [![test-makefile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml)
 [![test-yaml](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml)
 [![test-json](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml)
+[![test-github-actions](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-github-actions.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-github-actions.yml)
+[![test-secret](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-secret.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-secret.yml)
+[![test-writing](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-writing.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-writing.yml)
+[![test-commit](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-commit.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-commit.yml)
+[![releases](https://img.shields.io/github/v/release/tmknom/github-actions-baseline.svg)](https://github.com/tmknom/github-actions-baseline/releases)
 
 ## Description
 
