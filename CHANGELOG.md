@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/tmknom/github-actions-devops/compare/v0.2.0...v0.3.0) (2021-07-15)
+
+### Features
+
+- add support for actionlint ([efb857b](https://github.com/tmknom/github-actions-devops/commit/efb857be578b79ac33273dc740803a587e602709))
+
 ## [0.2.0](https://github.com/tmknom/github-actions-devops/compare/v0.1.0...v0.2.0) (2021-07-13)
 
 ### Features
