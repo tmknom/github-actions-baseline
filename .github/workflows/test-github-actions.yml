@@ -26,5 +26,4 @@ jobs:
       - name: Display actionlint
         run: ./actionlint --version
       - name: Run actionlint
-        # The colon specified in the shellcheck option is a workaround to disable shellcheck
-        run: ./actionlint -color -shellcheck ':'
+        run: ./actionlint -color
