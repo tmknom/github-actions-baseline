@@ -2,12 +2,12 @@
 
 A collection of useful GitHub Actions for all kinds of projects
 
-![test-dockerfile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-dockerfile.yml/badge.svg)
-![test-shell](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-shell.yml/badge.svg)
-![test-markdown](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-markdown.yml/badge.svg)
-![test-makefile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml/badge.svg)
-![test-yaml](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml/badge.svg)
-![test-json](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml/badge.svg)
+[![test-dockerfile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-dockerfile.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-dockerfile.yml)
+[![test-shell](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-shell.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-shell.yml)
+[![test-markdown](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-markdown.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-markdown.yml)
+[![test-makefile](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-makefile.yml)
+[![test-yaml](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-yaml.yml)
+[![test-json](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml/badge.svg)](https://github.com/tmknom/github-actions-baseline/actions/workflows/test-json.yml)
 
 ## Description
 
