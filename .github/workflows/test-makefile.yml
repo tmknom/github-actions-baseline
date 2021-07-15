@@ -30,6 +30,7 @@ jobs:
           cd "${RUNNER_TEMP}"/bin
           make
       - name: Display checkmake
-        run: "${RUNNER_TEMP}"/bin/checkmake --version
+        run: |
+          "${RUNNER_TEMP}"/bin/checkmake --version
       - name: Run checkmake
         run: find . -name Makefile | xargs -I {} "${RUNNER_TEMP}"/bin/checkmake {}
