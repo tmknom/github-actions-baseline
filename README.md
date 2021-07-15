@@ -25,8 +25,10 @@ Start from this baseline, then your code will be much more maintainable.
     - [Test Dockerfile](#test-dockerfile)
     - [Test Shell](#test-shell)
     - [Test Markdown](#test-markdown)
+    - [Test Makefile](#test-makefile)
     - [Test YAML](#test-yaml)
     - [Test JSON](#test-json)
+    - [Test GitHub Actions](#test-github-actions)
     - [Test Secret](#test-secret)
     - [Test Writing](#test-writing)
     - [Test Commit](#test-commit)
@@ -39,7 +41,7 @@ Start from this baseline, then your code will be much more maintainable.
   - [Author](#author)
   - [License](#license)
 
-<!-- Added by: root, at: Sun Jul 11 07:21:17 UTC 2021 -->
+<!-- Added by: root, at: Thu Jul 15 06:12:13 UTC 2021 -->
 
 <!--te-->
 
