@@ -29,6 +29,9 @@ DOCKERFILES ?= $(shell ls dockerfiles | sort)
 BUILD_TARGETS ?= $(patsubst %,build-%,$(DOCKERFILES))
 CLEAN_TARGETS ?= $(patsubst %,clean-%,$(DOCKERFILES))
 
+WORKFLOW_FILES ?= $(shell find .github/workflows -name 'test-*.yml' | awk -F/ '{sub(".yml", "")}{print $$NF}' | sort)
+TRIGGER_TARGETS ?= $(patsubst %,trigger-%,$(WORKFLOW_FILES))
+
 #
 # Variables for the current git attributes
 #
@@ -174,6 +177,14 @@ trigger: ## trigger all test workflows in GitHub Actions
 	git push origin release-test-all
 	git branch release-test-all -d
 	git push origin release-test-all -d
+
+.PHONY: $(TRIGGER_TARGETS)
+$(TRIGGER_TARGETS):
+	WORKFLOW_NAME=$(patsubst trigger-%,%,$@) && \
+	git branch $${WORKFLOW_NAME} && \
+	git push origin $${WORKFLOW_NAME} && \
+	git branch $${WORKFLOW_NAME} -d && \
+	git push origin $${WORKFLOW_NAME} -d
 
 #
 # Bump version
