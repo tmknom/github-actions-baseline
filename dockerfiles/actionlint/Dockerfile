@@ -2,7 +2,7 @@ FROM golang:1.16 as build-actionlint
 
 WORKDIR /app
 
-ENV VERSION=1.4.1
+ENV VERSION=1.6.9
 ENV TAR_BALL=actionlint_"${VERSION}"_linux_amd64.tar.gz
 ENV BASE_URL=https://github.com/rhysd/actionlint/releases/download
 ENV URL="${BASE_URL}"/v"${VERSION}"/"${TAR_BALL}"
